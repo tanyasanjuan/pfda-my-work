@@ -7,3 +7,7 @@ url = 'https://www.gov.uk/bank-holidays.json'
 response = requests.get(url)
 data = response.json()
 print(data)
+# this print a dictionary object with nested dictionaries and lists
+
+# modifying the program to print the 1st holiday in northern ireland
+print(data['northern-ireland']['events'][0])
