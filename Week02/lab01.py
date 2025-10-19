@@ -51,3 +51,13 @@ with open (datadir + filename, 'rt') as fp:
         linecount += 1
     print(f"\nAverage Age is: {total_age/(linecount-1)}") # linecount-1 to exclude header row
 
+
+# read the file as a dictionary object
+with open (datadir + filename, 'rt') as fp:
+    reader = csv.DictReader(fp, delimiter=',', quoting=csv.QUOTE_NONNUMERIC)
+    linecount = 0
+    total_age = 0
+    for line in reader:
+        total_age += line['age'] # the age is in the column with header 'age'
+        linecount += 1
+    print(f"\nAverage Age is: {total_age/linecount}") # there's no the -1 here as DictReader skips the header row
