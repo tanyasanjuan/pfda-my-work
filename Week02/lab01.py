@@ -12,7 +12,7 @@ with open (datadir + filename, 'rt') as fp:
     for line in reader:
         print(line)
 # this will print each line as a list
-"""
+
 # modifiying the program to deal with the header line separately
 with open (datadir + filename, 'rt') as fp:
     reader = csv.reader(fp, delimiter=',')
@@ -23,3 +23,16 @@ with open (datadir + filename, 'rt') as fp:
         else:
             print(line)
         linecount += 1
+"""
+# Program modified to calculate the average age of the people in the CSV file
+with open (datadir + filename, 'rt') as fp:
+    reader = csv.reader(fp, delimiter=',')
+    linecount = 0
+    total_age = 0
+    for line in reader:
+        if not linecount: # first row ie header row
+            pass
+        else: # all other rows
+            total_age += int(line[1]) # the age is in the second column (index 1)
+        linecount += 1
+    print(f"\nAverage Age is: {total_age/(linecount-1)}") # linecount-1 to exclude header row
