@@ -3,10 +3,11 @@
 # This program creates a CSV file called data.csv.
 
 import csv
+import pandas as pd
 
 filename = 'data.csv'
 datadir = '/Users/tanya/OneDrive/Documentos/ATU/Dev/pands/pfda-my-work/Week02/'
-"""
+
 with open (datadir + filename, 'rt') as fp:
     reader = csv.reader(fp, delimiter=',')
     for line in reader:
@@ -36,7 +37,8 @@ with open (datadir + filename, 'rt') as fp:
             total_age += int(line[1]) # the age is in the second column (index 1)
         linecount += 1
     print(f"\nAverage Age is: {total_age/(linecount-1)}") # linecount-1 to exclude header row
-"""
+
+
 
 # we will use the quoted parameter to read in the numbers as floats
 with open (datadir + filename, 'rt') as fp:
@@ -61,3 +63,6 @@ with open (datadir + filename, 'rt') as fp:
         total_age += line['age'] # the age is in the column with header 'age'
         linecount += 1
     print(f"\nAverage Age is: {total_age/linecount}") # there's no the -1 here as DictReader skips the header row
+
+df = pd.read_csv(datadir + filename)
+df.info()
